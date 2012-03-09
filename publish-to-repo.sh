@@ -11,3 +11,7 @@ cat ~/.ivy2/local/default/${name}_${scalaVersion}/${version}/poms/${name}_${scal
   | sed 's/<groupId>default<\/groupId>/<groupId>org.rogach<\/groupId>/' \
   | sed "s/<artifactId>${name}_${scalaVersion}<\/artifactId>/<artifactId>${name}<\/artifactId>/" \
   > /home/platon/sync/org.rogach/org/rogach/${name}/${version}/${name}-${version}.pom
+cd /home/platon/sync/org.rogach/
+git add .
+git commit -m "updated repository"
+git push
