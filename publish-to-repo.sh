@@ -14,5 +14,6 @@ cat ~/.ivy2/local/default/${name}_${scalaVersion}/${version}/poms/${name}_${scal
 cd /home/platon/sync/org.rogach/
 git add .
 git commit -m "updated repository"
+bzr add
 bzr commit -m "updated repository"
 git push
