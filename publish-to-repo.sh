@@ -3,14 +3,17 @@
 name=`sed -n 's_\s*name\s*:=\s*"\(.*\)"_\1_p' build.sbt`
 version=`sed -n 's_\s*version\s*:=\s*"\(.*\)"_\1_p' build.sbt`
 scalaVersion=`sed -n 's_\s*scalaVersion\s*:=\s*"\(.*\)"_\1_p' build.sbt`
-sbt compile publish-local
-mkdir -p /home/platon/sync/org.rogach/org/rogach/${name}/${version}/
-cp ~/.ivy2/local/default/${name}_${scalaVersion}/${version}/jars/${name}_${scalaVersion}.jar \
-  /home/platon/sync/org.rogach/org/rogach/${name}/${version}/${name}-${version}.jar
-cat ~/.ivy2/local/default/${name}_${scalaVersion}/${version}/poms/${name}_${scalaVersion}.pom \
-  | sed 's/<groupId>default<\/groupId>/<groupId>org.rogach<\/groupId>/' \
-  | sed "s/<artifactId>${name}_${scalaVersion}<\/artifactId>/<artifactId>${name}<\/artifactId>/" \
-  > /home/platon/sync/org.rogach/org/rogach/${name}/${version}/${name}-${version}.pom
+sbt +compile +publish-local
+for sVersion in 2.9.0 2.9.0-1 2.9.1
+do
+  mkdir -p /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/
+  cp ~/.ivy2/local/default/${name}_${sVersion}/${version}/jars/${name}_${scalaVersion}.jar \
+    /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/${name}-${version}.jar
+  cat ~/.ivy2/local/default/${name}_${sVersion}/${version}/poms/${name}_${scalaVersion}.pom \
+    | sed 's/<groupId>default<\/groupId>/<groupId>org.rogach<\/groupId>/' \
+    | sed "s/<artifactId>${name}_${sVersion}<\/artifactId>/<artifactId>${name}<\/artifactId>/" \
+    > /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/${name}-${version}.pom
+done
 cd /home/platon/sync/org.rogach/
 git add .
 git commit -m "updated repository"
