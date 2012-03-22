@@ -11,7 +11,6 @@ do
     /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/${name}_${sVersion}-${version}.jar
   cat ~/.ivy2/local/default/${name}_${sVersion}/${version}/poms/${name}_${sVersion}.pom \
     | sed 's/<groupId>default<\/groupId>/<groupId>org.rogach<\/groupId>/' \
-    | sed "s/<artifactId>${name}_${sVersion}<\/artifactId>/<artifactId>${name}<\/artifactId>/" \
     > /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/${name}_${sVersion}-${version}.pom
 done
 cd /home/platon/sync/org.rogach/
