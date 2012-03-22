@@ -3,7 +3,7 @@
 name=`sed -n 's_\s*name\s*:=\s*"\(.*\)"_\1_p' build.sbt`
 version=`sed -n 's_\s*version\s*:=\s*"\(.*\)"_\1_p' build.sbt`
 scalaVersion=`sed -n 's_\s*scalaVersion\s*:=\s*"\(.*\)"_\1_p' build.sbt`
-sbt publish-local
+sbt compile publish-local
 mkdir -p /home/platon/sync/org.rogach/org/rogach/${name}/${version}/
 cp ~/.ivy2/local/default/${name}_${scalaVersion}/${version}/jars/${name}_${scalaVersion}.jar \
   /home/platon/sync/org.rogach/org/rogach/${name}/${version}/${name}-${version}.jar
