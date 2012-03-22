@@ -7,9 +7,9 @@ sbt +compile +publish-local
 for sVersion in 2.9.0 2.9.0-1 2.9.1
 do
   mkdir -p /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/
-  cp ~/.ivy2/local/default/${name}_${sVersion}/${version}/jars/${name}_${scalaVersion}.jar \
+  cp ~/.ivy2/local/default/${name}_${sVersion}/${version}/jars/${name}_${sVersion}.jar \
     /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/${name}-${version}.jar
-  cat ~/.ivy2/local/default/${name}_${sVersion}/${version}/poms/${name}_${scalaVersion}.pom \
+  cat ~/.ivy2/local/default/${name}_${sVersion}/${version}/poms/${name}_${sVersion}.pom \
     | sed 's/<groupId>default<\/groupId>/<groupId>org.rogach<\/groupId>/' \
     | sed "s/<artifactId>${name}_${sVersion}<\/artifactId>/<artifactId>${name}<\/artifactId>/" \
     > /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/${name}-${version}.pom
