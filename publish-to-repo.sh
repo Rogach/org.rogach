@@ -4,7 +4,7 @@ name=`sed -n 's_\s*name\s*:=\s*"\(.*\)"_\1_p' build.sbt`
 version=`sed -n 's_\s*version\s*:=\s*"\(.*\)"_\1_p' build.sbt`
 scalaVersion=`sed -n 's_\s*scalaVersion\s*:=\s*"\(.*\)"_\1_p' build.sbt`
 sbt +compile +publish-local
-for sVersion in 2.9.0 2.9.0-1 2.9.1 2.9.1-1
+for sVersion in $(cat build.sbt  | grep cross | grep -Po '\d\.\d\.\d[^-]|\d\.\d\.\d-\d[^-]' | while read x; do echo "${x%?}"; done)
 do
   mkdir -p /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/
   cp ~/.ivy2/local/default/${name}_${sVersion}/${version}/jars/${name}_${sVersion}.jar \
