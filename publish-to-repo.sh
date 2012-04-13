@@ -9,7 +9,7 @@ do
   mkdir -p /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/
   cp ~/.ivy2/local/org.rogach/${name}_${sVersion}/${version}/jars/${name}_${sVersion}.jar \
     /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/${name}_${sVersion}-${version}.jar
-  cat ~/.ivy2/local/org.rogach/${name}_${sVersion}/${version}/poms/${name}_${sVersion}.pom \
+  cp ~/.ivy2/local/org.rogach/${name}_${sVersion}/${version}/poms/${name}_${sVersion}.pom \
     /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/${name}_${sVersion}-${version}.pom
 done
 cd /home/platon/sync/org.rogach/
