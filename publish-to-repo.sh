@@ -7,9 +7,9 @@ sbt +compile +publish-local
 for sVersion in $(cat build.sbt  | grep cross | grep -Po '\d\.\d\.\d[^-]|\d\.\d\.\d-\d[^-]' | while read x; do echo "${x%?}"; done)
 do
   mkdir -p /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/
-  cp ~/.ivy2/local/default/${name}_${sVersion}/${version}/jars/${name}_${sVersion}.jar \
+  cp ~/.ivy2/local/${name}/${name}_${sVersion}/${version}/jars/${name}_${sVersion}.jar \
     /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/${name}_${sVersion}-${version}.jar
-  cat ~/.ivy2/local/default/${name}_${sVersion}/${version}/poms/${name}_${sVersion}.pom \
+  cat ~/.ivy2/local/${name}/${name}_${sVersion}/${version}/poms/${name}_${sVersion}.pom \
     | sed 's/<groupId>default<\/groupId>/<groupId>org.rogach<\/groupId>/' \
     > /home/platon/sync/org.rogach/org/rogach/${name}_${sVersion}/${version}/${name}_${sVersion}-${version}.pom
 done
